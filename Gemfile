@@ -37,4 +37,12 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
+group :development do
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  # gem 'guard-annotate'
+end
+
+gem 'annotate'

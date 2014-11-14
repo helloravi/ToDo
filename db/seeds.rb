@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+def create_task(title, done = false)
+  task = Task.find_or_create_by(title: title)
+  task.update_attributes(done: done)
+end
+
+create_task("Clean the board")
+create_task("Get a maid")

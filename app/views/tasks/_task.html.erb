@@ -1,0 +1,15 @@
+<%
+if task.done?
+	target_path=task_path(task)
+else
+	target_path=task_path(task, done: true)
+end
+%>        
+
+
+        <li id="task_<%= task.id %>" class="<%= 'done' if task.done? %>">
+          <span><%= task.title %></span>
+          <%= link_to "( mark #{task.done? ? 'undone' : 'done'})", target_path, remote: true, method: :patch %>
+          <%= link_to "( delete )", task_path(task), remote: true, method: :delete,  data: {confirm: "Are you sure you want to delete the task?"}, class: "delete" %>
+        </li>
+

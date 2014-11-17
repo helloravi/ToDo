@@ -1,11 +1,24 @@
 class TasksController < ApplicationController
   def index
-    @tasks_done = Task.done
-    @tasks_pending = Task.pending
+    @tasks = Task.all
+    @new_task = Task.new
+  end
+
+  def create
+  	@task = Task.new
+  	@task.title = params[:task][:title]
+  	@save_success = @task.save
   end
 
   def update
-    Task.find(params[:id]).mark_done!(params[:done].present?)
-    redirect_to root_path
+  	@task = Task.find(params[:id])
+    @task.mark_done!(params[:done].present?)
+    
   end
+
+  def destroy
+  	@task = Task.find(params[:id])
+  	@task.destroy
+  end
+
 end

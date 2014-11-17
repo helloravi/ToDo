@@ -10,8 +10,7 @@
 #
 
 class Task < ActiveRecord::Base
-  scope :done, -> {where(done: true)}
-  scope :pending, -> {where(done: false)}
+	validates :title, presence: true
 
   def mark_done!(status)
     update_attribute(:done, status)

@@ -1,29 +1,17 @@
 <div id="tasks">
-  <h1>Tasks Pending</h1>
-  <% if @tasks_pending.empty? %>
+  <h1>Tasks </h1>
+  <% if @tasks.empty? %>
     <div class="blank">Yey! No tasks to do!!</div>
   <% else %>
     <ul>
-      <% @tasks_pending.each do |task| %>
-        <li>
-          <%= task.title %>
-          <%= link_to "( mark done )", task_path(task, done: true), method: :patch, data: {"disable-with" => "Please wait" } %>
-        </li>
-      <% end %>
+    <%= render @tasks %>
+
     </ul>
   <% end %>
 
-  <h1>Tasks Done</h1>
-  <% if @tasks_done.empty? %>
-    <div class="blank">Your accomplished tasks will appear here</div>
-  <% else %>
-    <ul>
-      <% @tasks_done.each do |task| %>
-        <li>
-          <%= task.title %>
-          <%= link_to "( mark undone )", task_path(task), method: :patch, data: {"disable-with" => "Please wait" } %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= simple_form_for @new_task, remote: true, html: {id: "task_form"} do |f| %>
+     <%= f.input :title, label: false, placeholder: "Eg. Eat more"  %>
+     <%= f.submit "Track" %>
+    <% end %>
+
 </div>

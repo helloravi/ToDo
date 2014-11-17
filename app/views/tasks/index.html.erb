@@ -1,24 +1,29 @@
-<h1>Tasks Pending</h1>
-<% if @tasks_pending.empty? %>
-  <div class="blank">Yey! No tasks to do!!</div>
-<% else %>
-  <ul>
-    <% @tasks_pending.each do |task| %>
-      <li>
-        <%= task.title %>
-        <%= link_to "( mark done )", task_path(task), method: :patch %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div id="tasks">
+  <h1>Tasks Pending</h1>
+  <% if @tasks_pending.empty? %>
+    <div class="blank">Yey! No tasks to do!!</div>
+  <% else %>
+    <ul>
+      <% @tasks_pending.each do |task| %>
+        <li>
+          <%= task.title %>
+          <%= link_to "( mark done )", task_path(task, done: true), method: :patch, data: {"disable-with" => "Please wait" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<h1>Tasks Done</h1>
-<% if @tasks_done.empty? %>
-  <div class="blank">Your accomplished tasks will appear here</div>
-<% else %>
-  <ul>
-    <% @tasks_done.each do |task| %>
-      <li><%= task.title %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <h1>Tasks Done</h1>
+  <% if @tasks_done.empty? %>
+    <div class="blank">Your accomplished tasks will appear here</div>
+  <% else %>
+    <ul>
+      <% @tasks_done.each do |task| %>
+        <li>
+          <%= task.title %>
+          <%= link_to "( mark undone )", task_path(task), method: :patch, data: {"disable-with" => "Please wait" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

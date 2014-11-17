@@ -66,6 +66,9 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.8)
       multi_json (~> 1.8)
+    guard-minitest (2.3.2)
+      guard (~> 2.0)
+      minitest (>= 3.0)
     hike (1.2.3)
     hitimes (1.2.2)
     http_parser.rb (0.6.0)
@@ -164,6 +167,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   guard
   guard-livereload
+  guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.7)

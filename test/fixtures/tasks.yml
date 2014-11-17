@@ -11,10 +11,10 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
+pending:
+  title: Pending Task
   done: false
 
-two:
-  title: MyString
-  done: false
+done:
+  title: Done Task
+  done: true

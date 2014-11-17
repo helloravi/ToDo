@@ -13,7 +13,7 @@ class Task < ActiveRecord::Base
   scope :done, -> {where(done: true)}
   scope :pending, -> {where(done: false)}
 
-  def mark_done!
-    update_attribute(:done, true)
+  def mark_done!(status)
+    update_attribute(:done, status)
   end
 end

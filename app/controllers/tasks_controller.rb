@@ -5,8 +5,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
-    task.mark_done!
+    Task.find(params[:id]).mark_done!(params[:done].present?)
     redirect_to root_path
   end
 end
